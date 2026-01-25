@@ -1,14 +1,11 @@
 {
-    "name": "turborepo-foundry-template",
+    "name": "portifolio",
     "version": "1.0.0",
-    "description": "A monorepo setup using Turborepo and Foundry, add additional packages/apps as desired.",
+    "description": "A monorepo setup using Turborepo and Foundry",
     "scripts": {},
     "keywords": [],
-    "author": "Superfluid",
+    "author": "Schrammel",
     "license": "MIT",
-    "bugs": {
-      "url": "https://github.com/0xdavinchee/turborepo-foundry-template/issues"
-    },
     "homepage": "https://github.com/0xdavinchee/turborepo-foundry-template"
   }
   
