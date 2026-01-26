@@ -34,7 +34,10 @@ contract SuperBridge {
     );
     event StatusUpdated(uint256 indexed id, Status status);
     event Refunded(uint256 indexed id, address indexed user, uint256 amount);
-    event OperatorUpdated(address indexed oldOperator, address indexed newOperator);
+    event OperatorUpdated(
+        address indexed oldOperator,
+        address indexed newOperator
+    );
 
     modifier onlyOperator() {
         require(msg.sender == operator, "ONLY_OPERATOR");
@@ -47,7 +50,6 @@ contract SuperBridge {
         token = IERC20(tokenAddress);
         operator = operatorAddress;
     }
-
 
     function requestBridge(
         uint256 amount,
@@ -72,22 +74,25 @@ contract SuperBridge {
     }
 
     // Backend node will update the status before start the transaction
-    function updateStatus(uint256 id, Status newStatus) external onlyOperator {
+    function conclude(uint256 id) external onlyOperator {
         Request storage request = requests[id];
         require(request.user != address(0), "REQUEST_NOT_FOUND");
         require(request.status == Status.Pending, "NOT_PENDING");
-        require(
-            newStatus == Status.Concluded || newStatus == Status.Reverted,
-            "BAD_STATUS"
-        );
 
-        request.status = newStatus;
+        request.status = Status.Concluded;
+        IBridgeToken(address(token)).burn(request.amount);
 
-        if (newStatus == Status.Concluded) {
-            IBridgeToken(address(token)).burn(request.amount);
-        }
+        emit StatusUpdated(id, Status.Concluded);
+    }
 
-        emit StatusUpdated(id, newStatus);
+    function revertRequest(uint256 id) external onlyOperator {
+        Request storage request = requests[id];
+        require(request.user != address(0), "REQUEST_NOT_FOUND");
+        require(request.status == Status.Pending, "NOT_PENDING");
+
+        request.status = Status.Reverted;
+
+        emit StatusUpdated(id, Status.Reverted);
     }
 
     function claimRefund(uint256 id) external {
