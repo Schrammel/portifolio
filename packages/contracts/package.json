@@ -4,7 +4,10 @@
     "description": "The Turborepo Foundry template smart contracts",
     "scripts": {
       "postinstall": "forge install",
-      "build": "forge build"
+      "build": "forge build",
+      "generate:contracts": "wagmi generate",
+      "test:viem": "forge build && pnpm generate:contracts && vitest run",
+      "test:viem:watch": "forge build && pnpm generate:contracts && vitest"
     },
     "keywords": [],
     "author": "PoolBois",
@@ -12,6 +15,19 @@
     "bugs": {
       "url": "https://github.com/0xdavinchee/turborepo-foundry-template/issues"
     },
-    "homepage": "https://github.com/0xdavinchee/turborepo-foundry-template/packages/contracts#readme"
+    "homepage": "https://github.com/0xdavinchee/turborepo-foundry-template/packages/contracts#readme",
+    "exports": {
+      "./generated": "./src/generated/contracts.ts"
+    },
+    "files": [
+      "src/generated"
+    ],
+    "devDependencies": {
+      "@types/node": "^20.12.12",
+      "@wagmi/cli": "^2.1.5",
+      "viem": "^2.21.0",
+      "vitest": "^1.6.0",
+      "typescript": "^5.5.4"
+    }
   }
   

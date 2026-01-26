@@ -27,3 +27,11 @@ sequenceDiagram
           end
         end
 ```
+
+### Run tests:
+needs to move to package.json
+
+```
+pnpm -C packages/contracts install
+pnpm -C packages/contracts test:viem
+```
