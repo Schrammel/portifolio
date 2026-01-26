@@ -34,4 +34,6 @@ contract BridgeToken is ERC20, ERC20Permit, ERC20Burnable {
     function mint(address to, uint256 amount) external onlyMinter {
         _mint(to, amount);
     }
+
+    
 }
