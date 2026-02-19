@@ -13,6 +13,7 @@
   "include": [
     "test/viem/**/*.ts",
     "vitest.config.ts",
+    "scripts/**/*.ts",
     "wagmi.bytecode.plugin.ts",
     "src/generated/contracts.ts"
   ]
