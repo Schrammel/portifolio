@@ -1,0 +1,10 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0D161D"/>
+  <circle cx="180" cy="120" r="180" fill="#2D8F73" fill-opacity="0.28"/>
+  <circle cx="980" cy="520" r="220" fill="#4F73C9" fill-opacity="0.28"/>
+  <rect x="120" y="140" width="960" height="350" rx="24" fill="#13212B" stroke="#405867"/>
+  <text x="170" y="240" fill="#9AB5C3" font-size="24" font-family="sans-serif" letter-spacing="2">PLACEHOLDER OPENGRAPH IMAGE</text>
+  <text x="170" y="325" fill="#F1F7FA" font-size="62" font-family="sans-serif" font-weight="700">David Schrammel</text>
+  <text x="170" y="385" fill="#D3DDE3" font-size="34" font-family="sans-serif">Career Dashboard</text>
+  <text x="170" y="440" fill="#8EA2AD" font-size="24" font-family="sans-serif">Profile • Timeline • Skills • Web3</text>
+</svg>

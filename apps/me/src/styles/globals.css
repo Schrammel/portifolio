@@ -1,6 +1,118 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: var(--font-manrope), "Segoe UI", sans-serif;
+  --font-display: var(--font-space-grotesk), "Segoe UI", sans-serif;
+}
+
+:root,
+:root[data-theme="light"] {
+  --bg: #f6f7f2;
+  --bg-accent: color-mix(in oklab, #d9f0df 70%, #f6f7f2 30%);
+  --bg-accent-2: color-mix(in oklab, #dce6ff 68%, #f6f7f2 32%);
+  --text: #142025;
+  --text-strong: #0b1418;
+  --text-muted: #52616a;
+  --card-bg: color-mix(in oklab, white 84%, #f6f7f2 16%);
+  --card-border: color-mix(in oklab, #0f1f28 16%, #f6f7f2 84%);
+  --badge-bg: color-mix(in oklab, #d8e4ff 62%, #ffffff 38%);
+  --badge-border: color-mix(in oklab, #284160 22%, #ffffff 78%);
+  --badge-fg: #0f2d4c;
+  --chip-bg: color-mix(in oklab, #ffffff 72%, #e8edf2 28%);
+  --chip-border: color-mix(in oklab, #203443 18%, #ffffff 82%);
+  --chip-fg: #21323d;
+  --chip-hover: color-mix(in oklab, #d7e0ea 60%, #ffffff 40%);
+  --chip-active-bg: color-mix(in oklab, #152732 82%, #2f556e 18%);
+  --chip-active-border: color-mix(in oklab, #152732 84%, #5f95b8 16%);
+  --chip-active-fg: #f7fbff;
+  --chart-emphasis: #2d8f73;
+  --chart-secondary: #4f73c9;
+  --ring: #2d8f73;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d161d;
+  --bg-accent: color-mix(in oklab, #1a4a3f 45%, #0d161d 55%);
+  --bg-accent-2: color-mix(in oklab, #22365a 48%, #0d161d 52%);
+  --text: #d3dde3;
+  --text-strong: #f1f7fa;
+  --text-muted: #8ea2ad;
+  --card-bg: color-mix(in oklab, #13212b 86%, #0d161d 14%);
+  --card-border: color-mix(in oklab, #88a0ae 28%, #0d161d 72%);
+  --badge-bg: color-mix(in oklab, #223f5a 66%, #12212d 34%);
+  --badge-border: color-mix(in oklab, #8aa9c0 28%, #12212d 72%);
+  --badge-fg: #d9ebfa;
+  --chip-bg: color-mix(in oklab, #1a2933 70%, #0d161d 30%);
+  --chip-border: color-mix(in oklab, #8ba2b0 24%, #0d161d 76%);
+  --chip-fg: #d3dde3;
+  --chip-hover: color-mix(in oklab, #273744 72%, #0d161d 28%);
+  --chip-active-bg: color-mix(in oklab, #d3ecdf 16%, #2b725d 84%);
+  --chip-active-border: color-mix(in oklab, #c5e6d7 26%, #225c4b 74%);
+  --chip-active-fg: #f1faf5;
+  --chart-emphasis: #4cc6a2;
+  --chart-secondary: #86a8ff;
+  --ring: #4cc6a2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #0d161d;
+    --bg-accent: color-mix(in oklab, #1a4a3f 45%, #0d161d 55%);
+    --bg-accent-2: color-mix(in oklab, #22365a 48%, #0d161d 52%);
+    --text: #d3dde3;
+    --text-strong: #f1f7fa;
+    --text-muted: #8ea2ad;
+    --card-bg: color-mix(in oklab, #13212b 86%, #0d161d 14%);
+    --card-border: color-mix(in oklab, #88a0ae 28%, #0d161d 72%);
+    --badge-bg: color-mix(in oklab, #223f5a 66%, #12212d 34%);
+    --badge-border: color-mix(in oklab, #8aa9c0 28%, #12212d 72%);
+    --badge-fg: #d9ebfa;
+    --chip-bg: color-mix(in oklab, #1a2933 70%, #0d161d 30%);
+    --chip-border: color-mix(in oklab, #8ba2b0 24%, #0d161d 76%);
+    --chip-fg: #d3dde3;
+    --chip-hover: color-mix(in oklab, #273744 72%, #0d161d 28%);
+    --chip-active-bg: color-mix(in oklab, #d3ecdf 16%, #2b725d 84%);
+    --chip-active-border: color-mix(in oklab, #c5e6d7 26%, #225c4b 74%);
+    --chip-active-fg: #f1faf5;
+    --chart-emphasis: #4cc6a2;
+    --chart-secondary: #86a8ff;
+    --ring: #4cc6a2;
+  }
+}
+
+* {
+  border-color: var(--card-border);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  text-rendering: optimizeLegibility;
+}
+
+@keyframes fade-slide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main > * {
+  animation: fade-slide 400ms ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main > * {
+    animation: none;
+  }
 }
